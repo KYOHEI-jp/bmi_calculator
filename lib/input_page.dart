@@ -1,4 +1,9 @@
+import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'icon_content.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -8,6 +13,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Color maleCardColor = kInactiveCardColour;
+  Color femaleCardColor = kInactiveCardColour;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +32,28 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(
-                    colour: Color(0xFF1DE33),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Male car was pressed");
+                    },
+                    child: ReusableCard(
+                      colour: maleCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: "male",
+                      ),
+                      onPress: () {},
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1DE33),
+                    colour: femaleCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: "female",
+                    ),
+                    onPress: () {},
                   ),
                 ),
               ],
@@ -38,6 +62,8 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               colour: Color(0xFF1DE33),
+              cardChild: Column(),
+              onPress: () {},
             ),
           ),
           Expanded(
@@ -46,34 +72,21 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: Color(0xF02DE99),
+                    cardChild: Column(),
+                    onPress: () {},
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: Color(0xF01DE33),
+                    cardChild: Column(),
+                    onPress: () {},
                   ),
                 ),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colour});
-
-  Color colour;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
