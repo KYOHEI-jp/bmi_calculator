@@ -13,9 +13,29 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
-  Color maleCardColor = kInactiveCardColour;
+  Color maleCardColor = kActiveCardColour;
   Color femaleCardColor = kInactiveCardColour;
+
+  // 1 = male, 2 = female
+  void updateColour(int gender) {
+    // male card pressed
+    if (gender == 1) {
+      if (maleCardColor == kInactiveCardColour) {
+        maleCardColor = kActiveCardColour;
+        femaleCardColor = kInactiveCardColour;
+      } else {
+        maleCardColor = kInactiveCardColour;
+      }
+    }
+    if (gender == 2) {
+      if (femaleCardColor == kInactiveCardColour) {
+        femaleCardColor = kActiveCardColour;
+        maleCardColor = kInactiveCardColour;
+      } else {
+        femaleCardColor = kInactiveCardColour;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +54,9 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print("Male car was pressed");
+                      setState(() {
+                        updateColour(1);
+                      });
                     },
                     child: ReusableCard(
                       colour: maleCardColor,
@@ -47,13 +69,20 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: femaleCardColor,
-                    cardChild: IconContent(
-                      icon: FontAwesomeIcons.venus,
-                      label: "female",
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColour(2);
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: femaleCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: "female",
+                      ),
+                      onPress: () {},
                     ),
-                    onPress: () {},
                   ),
                 ),
               ],
