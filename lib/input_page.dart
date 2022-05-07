@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +13,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Color maleCardColor = kInactiveCardColour;
+  Color femaleCardColor = kInactiveCardColour;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +32,23 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(
-                    colour: Color(0xFF1DE33),
-                    cardChild: IconContent(
-                      icon: FontAwesomeIcons.mars,
-                      label: "male",
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Male car was pressed");
+                    },
+                    child: ReusableCard(
+                      colour: maleCardColor,
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: "male",
+                      ),
+                      onPress: () {},
                     ),
-                    onPress: () {},
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1DE33),
+                    colour: femaleCardColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: "female",
