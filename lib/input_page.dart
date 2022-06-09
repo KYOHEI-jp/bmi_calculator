@@ -18,7 +18,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Gender? selectedGender;
 
   @override
@@ -34,54 +33,65 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
-                    child: ReusableCard(
-                      colour: selectedGender == Gender.male
-                          ? kActiveCardColour
-                          : kInactiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: "male",
-                      ),
-                      onPress: () {},
+              child: Row(
+            children: [
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  child: ReusableCard(
+                    colour: selectedGender == Gender.male
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: "male",
                     ),
+                    onPress: () {},
                   ),
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
-                    child: ReusableCard(
-                      colour: selectedGender == Gender.female
-                          ? kInactiveCardColour
-                          : kActiveCardColour,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: "female",
-                      ),
-                      onPress: () {},
+              ),
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  child: ReusableCard(
+                    colour: selectedGender == Gender.female
+                        ? kInactiveCardColour
+                        : kActiveCardColour,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: "female",
                     ),
+                    onPress: () {},
                   ),
                 ),
-              ],
-            )),
+              ),
+            ],
+          )),
           Expanded(
             child: ReusableCard(
-              colour: Color(0xFF1DE33),
+              colour: kActiveCardColour,
               cardChild: Column(
                 children: [
-                  Text("HEIGHT")
+                  Text(
+                    "HEIGHT",
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "180",
+                        style: kNumberTextStyle,
+                      )
+                    ],
+                  )
                 ],
               ),
               onPress: () {},
