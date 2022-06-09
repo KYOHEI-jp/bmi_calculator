@@ -31,6 +31,7 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
