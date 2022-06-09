@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    double _currentSliderValue = 20;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -79,18 +80,38 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               colour: kActiveCardColour,
               cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "HEIGHT",
                     style: TextStyle(color: Colors.redAccent),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
                         "180",
                         style: kNumberTextStyle,
+                      ),
+                      Text(
+                        "cm",
+                        style: kLabelTextStyle,
                       )
                     ],
+                  ),
+                  Slider(
+                    value: _currentSliderValue,
+                    min: 0.0,
+                    max: 200.0,
+                    divisions: 1,
+                    label: _currentSliderValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    },
                   )
                 ],
               ),
