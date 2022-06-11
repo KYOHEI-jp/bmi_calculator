@@ -20,6 +20,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -104,13 +105,18 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0)
-                    ),
+                        inactiveTrackColor: Color(0xFF8D8E98),
+                        activeTrackColor: Colors.white,
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Color(0x29EB1555),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                       value: height.toDouble(),
                       min: 120.0,
                       max: 220.0,
-                      activeColor: Color(0xFFEB1555),
                       inactiveColor: Color(0xFF8D8E98),
                       label: _currentSliderValue.round().toString(),
                       onChanged: (double newValue) {
@@ -131,7 +137,19 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: Color(0xF02DE99),
-                    cardChild: Column(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "WEIGHT",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        )
+                      ],
+                    ),
                     onPress: () {},
                   ),
                 ),
