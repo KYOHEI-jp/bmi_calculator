@@ -147,6 +147,25 @@ class _InputPageState extends State<InputPage> {
                         Text(
                           weight.toString(),
                           style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              child: Icon(Icons.add),
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            FloatingActionButton(
+                              backgroundColor: Color(0xFF4C4F5E),
+                              onPressed: () {},
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -172,5 +191,25 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  final Widget child;
+
+  const RoundIconButton({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+        child: child,
+        elevation: 6.0,
+        constraints: BoxConstraints.tightFor(
+          width: 56.0,
+          height: 56.0,
+        ),
+        shape: CircleBorder(),
+        fillColor: Color(0xFF4C4F5E),
+        onPressed: () {});
   }
 }
