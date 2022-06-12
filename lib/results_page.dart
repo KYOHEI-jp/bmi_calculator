@@ -13,6 +13,7 @@ class ResultsPage extends StatelessWidget {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Container(
@@ -33,6 +34,15 @@ class ResultsPage extends StatelessWidget {
                   Text(
                     "Normal",
                     style: kResultTextStyle,
+                  ),
+                  Text(
+                    "18.3",
+                    style: kBMITextStyle,
+                  ),
+                  Text(
+                    "Your BMI result is quite low, you should eat more",
+                    textAlign: TextAlign.center,
+                    style: kBodyTextStyle,
                   )
                 ],
               ),
